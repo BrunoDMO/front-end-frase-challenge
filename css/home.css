@@ -1,61 +1,21 @@
 
-/* Update #lp-pom-box-53 with the ID of your landing page's box element. */  
-#box-1, #box-1-color-overlay {
-    display: none;
-}
-#box-1{
-    background: rgba(0, 0, 0, 0.281);
-    padding: 20px 20px;
-}
-
 body {
     
     background-color: black;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0.5)), url("../img/background1.jpg");
     background-repeat: no-repeat;
-}
-
-h1 {
-    display: none;
-}
-
-.hidden {
-    display: none;
+    margin: 5em;
 }
 
 select,
 option {
-    background-color: black;
-    color: white;
-    font-size: 15px;
-    padding: 0 1em;
+    display: none;
 }
-
-select {
-    border: none;
-    outline: none;
-}
-
 
 h2 {
     color: white;
     padding: 0em 0em;
-}
-
-main {
-    /*padding: 0 3em;*/
-}
-
-.cabecalho {
-    display: flex;
-    justify-content: space-between;
-    padding: 1em 3em;
-}
-
-.cabecalho__logo {
-    display: flex;
-    gap: 1em;
 }
 
 .cabecalho__logo img {
@@ -68,35 +28,13 @@ main {
     font-size: 48px
 }
 
-.lista {
-    list-style-type: none;
-    margin: 1em 0;
-    display: flex;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-    gap: 1px;
+.descricao{
+    text-align: center; 
 }
 
-.lista li img {
-    display: inline-block;
-    width: 250px;
-    margin-right: 10px;
-    height: 350px;
-    border-radius: 5px;
-    padding-bottom: 10px;
+.hidden{
+    display: none;
 }
-
-.pesquisa {
-    background-color: black;
-    min-height: 100vh;
-}
-
-section {
-    padding: 0 5em;
-}
-
 
 @media screen and (max-width: 1600px) {
     .lista {

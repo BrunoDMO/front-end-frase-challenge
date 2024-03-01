@@ -73,17 +73,49 @@ categoriaSelect.addEventListener('change', function () {
 // Array de URLs para as solicitações
 geraSeries();
 function geraSeries() {
-    const urls = ['/series/top5', '/series/lancamentos', '/series'];
+    const urls = ['/series/frases'];
 
-    // Faz todas as solicitações em paralelo
+    // // Faz todas as solicitações em paralelo
+    // Promise.all(urls.map(url => getDados(url)))
+    //     .then(data => elementos.lancamentos.innerHTML = data.map(f=> f.poster));
+
     Promise.all(urls.map(url => getDados(url)))
         .then(data => {
-            criarListaFilmes(elementos.top5, data[0]);
-            criarListaFilmes(elementos.lancamentos, data[1]);
-            criarListaFilmes(elementos.series, data[2].slice(0, 5));
+            criarFrase(elementos.lancamentos, data);
         })
         .catch(error => {
             lidarComErro("Ocorreu um erro ao carregar os dados.");
         });
 
 }
+
+// Função para criar a lista de filmes
+function criarFrase(elemento, dados) {
+    // Verifique se há um elemento <ul> dentro da seção
+    const ulExistente = elemento.querySelector('ul');
+
+    // Se um elemento <ul> já existe dentro da seção, remova-o
+    if (ulExistente) {
+        elemento.removeChild(ulExistente);
+    }
+
+    const ul = document.createElement('ul');
+    const listaHTML = dados.map((frase) => ` 
+    <p class="descricao"> Serie: ${frase.titulo} </p>
+    <li>                
+        <a>
+            <img src="${frase.poster}" alt="frase poster">
+        </a>
+    </li>
+    `);
+    // const paragrafo = document.createElement('p');
+    // const linha = document.createElement('br');
+    // paragrafo.textContent = `Temporada ${temporada}`;
+    // elemento.appendChild(paragrafo);
+    // elemento.appendChild(linha);
+    // elemento.appendChild(ul);
+
+    ul.innerHTML = listaHTML;
+    elemento.appendChild(ul);
+}
+

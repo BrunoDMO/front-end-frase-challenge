@@ -13,59 +13,28 @@
     <link rel="stylesheet" href="css/home.css">
     <title>Screenmatch</title>
 
-
 </head>
 
 <body>
     <header class="cabecalho">
         <div class="cabecalho__logo">
-            <img src="./img/logo.png" alt="Logo ScreenMatch">
-            <h1>Screen match</h1>
             <select data-categorias>
-                <option value="todos">Categorias</option>
-                <option value="comédia">Comédia</option>
-                <option value="ação">Ação</option>
-                <option value="crime">Crime</option>
-                <option value="drama">Drama</option>
-                <option value="aventura">Aventura</option>
+                <option class= "hidden" value="todos">Categorias</option>
             </select>
         </div>
-        <div class="cabecalho__opcoes">
-            <span class="material-symbols-outlined">
-                search
-            </span>
-
-            <span class="material-symbols-outlined">
-                notifications
-            </span>
-
-            <span class="material-symbols-outlined">
-                account_circle
-            </span>
-        </div>
-
     </header>
 
     <div class="cabecalho__logo" id="box-1">
         <img src="./img/logo.png" alt="Logo ScreenMatch">
-        <h1>Screen match</h1>
     </div>
 
     <div class="background1">
         <main>
-            <section data-name="lancamentos" class="section">
-                <h2>
-                    Lancamentos no ScreenMatch
+            <section data-name="lancamentos" class="frase">
+                <h2 class="titulo">
+                    Frase do dia!
                 </h2>
-            </section>
 
-            <section data-name="top5" class="section">
-                <h2>
-                    Titulos populares no ScreenMatch
-                </h2>
-            </section>
-            <section data-name="series" class="section">
-                <h2>Titulos no ScreenMatch</h2>
             </section>
     </div>
 
@@ -78,44 +47,6 @@
     </main>
     <script src="./scripts/index.js" type="module"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
-    <script>
-        //Fading Fixed Menu, modified from Fixed Menu v1.3.1
-
-        //Replace ID below with your own box ID
-        var boxToAppend = '#box-1';
-        //Choose pixel height of when menu fades in. Use the height of a page section like this: $("#lp-pom-block-93").height();
-        var showHeight = 150;
-
-        //Set to 'header' or 'footer'
-        var headerOrFooter = 'header';
-
-        var backgroundCSS = { "position": "fixed", "left": "0", "top": "0px", "bottom": "auto", "width": "100%", "z-index": "899", "background": "none" };
-        var colorOverlayCSS = { "position": "fixed", "left": "0", "top": "0px", "bottom": "auto", "width": "100%", "z-index": "auto", "border-style": "none none none none" };
-        var childrenCSS = { "position": "fixed", "left": "auto", "top": "0px", "bottom": "auto", "width": "100%", "z-index": "999", "border-style": "none none none none", "border-width": "0px" };
-        if (headerOrFooter === 'footer') {
-            backgroundCSS["top"] = 'auto';
-            backgroundCSS["bottom"] = '0px';
-            colorOverlayCSS["top"] = 'auto';
-            colorOverlayCSS["bottom"] = '0px';
-            childrenCSS["top"] = 'auto';
-            childrenCSS["bottom"] = '0px';
-        }
-        var boxParent = $(boxToAppend).parent();
-        var boxClone = $(boxToAppend).clone()
-
-        boxClone.appendTo(boxParent).css(backgroundCSS).children().remove();
-        $(boxToAppend).css(childrenCSS);
-        $(boxToAppend + '-color-overlay').appendTo(boxClone).css(colorOverlayCSS);
-
-        var bothBoxes = boxToAppend + ', ' + boxToAppend + '-color-overlay';
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > showHeight) {
-                $(bothBoxes).fadeIn();
-            } else {
-                $(bothBoxes).fadeOut();
-            }
-        });
-    </script>
 </body>
 
 </html>
