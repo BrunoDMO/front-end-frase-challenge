@@ -1,21 +1,22 @@
-
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     
     background-color: black;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0.5)), url("../img/background1.jpg");
-    background-repeat: no-repeat;
-    margin: 5em;
-}
-
-select,
-option {
-    display: none;
+    background-repeat: repeat;
+    margin: 3em;
+    justify-content: left;
 }
 
 h2 {
     color: white;
-    padding: 0em 0em;
+}
+
+.cabecalho__logo {
+    padding-bottom: 2em;
 }
 
 .cabecalho__logo img {
@@ -23,28 +24,70 @@ h2 {
     height: 50px;
 }
 
-.material-symbols-outlined {
-    color: white;
-    font-size: 48px
+.frase.descricao {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 400;
+    font-style: normal;
+    padding-bottom: 2em;
 }
 
-.descricao{
-    text-align: center; 
+.frase_text {
+    padding-top: 10em;
+    padding-left: 10em;
 }
 
-.hidden{
-    display: none;
+.descricao.titulo {
+    font-size: 40px;
+    font-style: italic;
+}
+
+.descricao.frase {
+    padding-top: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.frase.text {
+    text-align: start;
+}
+
+.frase_text .descricao {
+    padding-bottom: 1em;
+}
+
+a{
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 @media screen and (max-width: 1600px) {
     .lista {
         overflow-x: scroll;
     }
+    ul{
+        flex-direction: column-reverse;
+    }
+
+    .poster{
+        width: 20em;
+        height: 30em;
+    }
+    
 
     h2 {
         color: white;
         padding-left: 0em;
         padding-right: 0em;
+    }
+
+    .frase_text{
+        padding: 2em 0 0 0;
     }
 
 }
