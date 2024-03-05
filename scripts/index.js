@@ -2,62 +2,25 @@ import getDados from "./getDados.js";
 
 // Mapeia os elementos DOM que você deseja atualizar
 const elementos = {
-    top5: document.querySelector('[data-name="top5"]'),
-    lancamentos: document.querySelector('[data-name="lancamentos"]'),
-    series: document.querySelector('[data-name="series"]')
+    frase: document.querySelector('[data-name="frase_match"]'),
 };
 // Função genérica para tratamento de erros
 function lidarComErro(mensagemErro) {
     console.error(mensagemErro);
 }
 
-const categoriaSelect = document.querySelector('[data-categorias]');
-const sectionsParaOcultar = document.querySelectorAll('.section'); // Adicione a classe CSS 'hide-when-filtered' às seções e títulos que deseja ocultar.
-
-categoriaSelect.addEventListener('change', function () {
-    const categoria = document.querySelector('[data-name="categoria"]');
-    const categoriaSelecionada = categoriaSelect.value;
-
-    if (categoriaSelecionada === 'todos') {
-
-        for (const section of sectionsParaOcultar) {
-            section.classList.remove('hidden')
-        }
-        categoria.classList.add('hidden');
-
-    } else {
-
-        for (const section of sectionsParaOcultar) {
-            section.classList.add('hidden')
-        }
-
-        categoria.classList.remove('hidden')
-        // Faça uma solicitação para o endpoint com a categoria selecionada
-        getDados(`/series/categoria/${categoriaSelecionada}`)
-            .then(data => {
-                criarListaFilmes(categoria, data);
-            })
-            .catch(error => {
-                lidarComErro("Ocorreu um erro ao carregar os dados da categoria.");
-            });
-    }
-});
-
 // Array de URLs para as solicitações
 geraSeries();
 function geraSeries() {
     const urls = ['/series/frases'];
 
-    // // Faz todas as solicitações em paralelo
-    // Promise.all(urls.map(url => getDados(url)))
-    //     .then(data => elementos.lancamentos.innerHTML = data.map(f=> f.poster));
-
+    // Faz todas as solicitações em paralelo
     Promise.all(urls.map(url => getDados(url)))
         .then(data => {
-            criarFrase(elementos.lancamentos, data);
+            criarFrase(elementos.frase, data);
         })
         .catch(error => {
-            lidarComErro("Ocorreu um erro ao carregar os dados.");
+            lidarComErro(error);
         });
 
 }
@@ -70,6 +33,7 @@ function criarFrase(elemento, dados) {
     // Se um elemento <ul> já existe dentro da seção, remova-o
     if (ulExistente) {
         elemento.removeChild(ulExistente);
+        
     }
 
     const ul = document.createElement('ul');
@@ -94,5 +58,9 @@ function criarFrase(elemento, dados) {
 
     ul.innerHTML = listaHTML;
     elemento.appendChild(ul);
+
+    //Função para carregar nova frase
+    var button = document.querySelector(".button_frase_nova");
+    button.addEventListener("click", geraSeries);
 }
 

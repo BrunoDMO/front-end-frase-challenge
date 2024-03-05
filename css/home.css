@@ -65,6 +65,36 @@ a{
     display: flex;
     flex-direction: column-reverse;
 }
+.button_frase_nova{
+  background-image: linear-gradient(92.88deg, #80c1db 9.16%, #40adbb 43.89%, #3bafd3 64.72%);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 500;
+  height: 4rem;
+  padding: 0 50rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+footer{
+    padding-top: 5em;
+    display: block;
+    justify-content: center;
+}
+
+.button_frase_nova:hover {
+  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+  transition-duration: .1s;
+}
 
 @media screen and (max-width: 1600px) {
     .lista {
@@ -90,4 +120,12 @@ a{
         padding: 2em 0 0 0;
     }
 
+    .button_frase_nova {
+        padding: 0 2.6rem;
+      }
+
+    footer{
+        display: flex;
+        justify-content: left;
+    }
 }
